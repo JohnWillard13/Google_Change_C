@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
-int getCost(void);
-/*int getPay(void);
-void calcMoney();
-void calcChange(remaining);
-void exitRun();
-void clearScreen();*/
+float getCost(void);
+float getPay(void);
+//void calcMoney();
+//void calcChange(remaining);
+//void exitRun();
+//void clearScreen();
 
-int getCost(void){
+float getCost(void){
     float cost;
     printf("Please enter the cost of the item: ");
     scanf("%f",&cost);
@@ -19,11 +20,23 @@ int getCost(void){
     return cost;
 }
 
-int main(void){
-    int cost = getCost();
+float getPay(void){
+    float pay;
+    printf("Please enter the cost of the item: ");
+    scanf("%f",&pay);
+    while(pay <= 0){
+        printf("Cost must be greater than zero. Enter a new cost: ");
+        scanf("%f",&pay);
+    }
+    return pay;
+}
+
+void main(){
+    float cost = getCost();
+    float pay = getPay();
+    float diff = cost - pay;
+    printf("%.2f\n",diff);
+    printf("Test");
     int choice;
-    printf("%f",cost);
-    printf("Yes?");
     scanf("%d",&choice);
-    return 0;
 }
