@@ -2,11 +2,11 @@
 #include <stdlib.h>
 
 int getCost(void);
-int getPay(void);
+/*int getPay(void);
 void calcMoney();
 void calcChange(remaining);
 void exitRun();
-void clearScreen();
+void clearScreen();*/
 
 int getCost(void){
     float cost;
@@ -16,11 +16,14 @@ int getCost(void){
         printf("Cost must be greater than zero. Enter a new cost: ");
         scanf("%f",&cost);
     }
-    printf("%f",cost);
     return cost;
 }
 
 int main(void){
-    getCost();
+    int cost = getCost();
+    int choice;
+    printf("%f",cost);
+    printf("Yes?");
+    scanf("%d",&choice);
     return 0;
 }
