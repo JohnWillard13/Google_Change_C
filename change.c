@@ -15,6 +15,7 @@ float getCost(void){
     while(1){
         printf("Please enter the cost: ");
         scanf("%f",&cost);
+        printf("\n");
 
         if (!isdigit(cost)){
             printf("Value must be a number.");
@@ -33,6 +34,8 @@ float getCost(void){
 
     return cost;
 }
+
+
 
 float getPay(void){
     float pay;
