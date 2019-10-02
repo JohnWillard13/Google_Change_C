@@ -76,7 +76,7 @@ void calcChange(float due){
 
     int v = 0;
     int C_COUNT = 0;
-    while (v < sizeof(C_VALUE) / sizeof(*C_VALUE) && due > 0){
+    while (v < sizeof(C_VALUE) / sizeof(*C_VALUE) + 1 && due > 0){
         if (due - C_VALUE[v] > 0){
             due -= C_VALUE[v];
             C_COUNT++;
