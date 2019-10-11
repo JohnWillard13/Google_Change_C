@@ -7,15 +7,15 @@ float getCost();
 float getPay();
 void calcMoney();
 void calcChange(float remaining);
-//void exitRun();
-//void clearScreen();
+void exitRun();
+void clearScreen();
 
 float getCost(){
     float cost;
     while (1){
         printf("Cost: ");
         scanf("%f",&cost);
-        printf("\n");
+	clearScreen();
         
         if (cost <= 0){
             printf("Cost must be greater than zero.");
@@ -25,6 +25,7 @@ float getCost(){
         else
             break;
     }
+    clearScreen();
     return cost;
 }
 
@@ -33,8 +34,8 @@ float getPay(){
     while (1){
         printf("Given: ");
         scanf("%f",&pay);
-        printf("\n");
-        
+	clearScreen();        
+
         if (pay <= 0){
             printf("Amount given must be greater than zero.");
             continue;
@@ -43,6 +44,7 @@ float getPay(){
         else
             break;
     }
+    clearScreen();
     return pay;
 }
 
@@ -61,10 +63,9 @@ void calcMoney(){
 
     else {
         float chDiff = paid - cost;
-        printf("\n---Change---\n");
+        printf("---Change---\n");
         calcChange(chDiff);
     }
-
 }
 
 void calcChange(float due){
@@ -95,7 +96,60 @@ void calcChange(float due){
 }
 }
 
+void exitRun(){
+    while (1){
+	char choice;
+
+	printf("Are you sure you would like to exit the program? [y/n]: ");
+	scanf("%s",&choice);
+
+	if (choice == 'y'){
+		printf("Exiting...\n");
+		clearScreen();
+		exit(1);
+		
+	}
+
+	else if (choice == 'n'){
+		break;
+	}
+
+	else {
+		printf("Invalid option! Try again!");
+		clearScreen();
+		continue;
+	}
+    }
+ 	
+}
+
+void clearScreen(){
+    system("clear");
+}
+
 int main(){
+    
+    clearScreen();
+    char choice;
     calcMoney();
+
+    while (1){
+	printf("Would you like to continue? [y/n]: ");
+	scanf("%s",&choice);
+	clearScreen();
+	
+	if (choice == 'y'){
+	    calcMoney();
+    	}
+	else if (choice == 'n'){
+	    exitRun();
+	}
+
+	else {
+	    printf("Invalid option! Try again.");
+	    clearScreen();
+	    continue;
+	}
+    }
     return 0;
 }
