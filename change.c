@@ -69,29 +69,30 @@ void calcMoney(){
 
 void calcChange(float due){
 
-    float C_VALUE[10] = {100,50,20,10,5,1,0.025,0.10,0.05,0.01};
+    float C_VALUE[10] = {100,50,20,10,5,1,0.25,0.10,0.05,0.01};
     char C_WORD[10][20] = {"$100 Dollar Bills","$50 Dollar Bills","$20 Dollar Bills",
     "$10 Dollar Bills","$5 Dollar Bills","$1 Dollar Bills","Quarters","Dimes",
     "Nickels","Pennies"};
 
     int v = 0;
     int C_COUNT = 0;
-    while (v < sizeof(C_VALUE) / sizeof(*C_VALUE) + 1 && due > 0){
-        if (due - C_VALUE[v] > 0){
-            due -= C_VALUE[v];
-            C_COUNT++;
-            continue;  
-        }
+    while (v < sizeof(C_VALUE) / sizeof(*C_VALUE)){
+	    if (due - C_VALUE[v] >= 0){
+		    due -= C_VALUE[v];
+		    C_COUNT += 1;
+		    continue;
+	    }
 
-        else if (C_COUNT > 0){
-            printf("%d %s\n",C_COUNT,C_WORD[v]);
-            C_COUNT = 0;
-            v++;
-        }
-        else {
-            v++;
-        }
-    }
+	    else if (C_COUNT > 0){
+		    printf("%d %s\n",C_COUNT,C_WORD[v]);
+		    C_COUNT = 0;
+		    v++;
+		    continue;
+	    }
+
+	    else
+		    v++;
+}
 }
 
 int main(){
